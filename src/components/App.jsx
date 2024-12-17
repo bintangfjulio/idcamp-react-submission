@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import DataTable from "./DataTable";
 import Header from "./Header";
-import { getDatas } from "../utils/datas";
+import { getInitialData } from "../utils/index";
 import { getHeaders } from "../utils/headers";
 import { getActions } from "../utils/actions";
 import CardInsert from "./CardInsert";
@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    const datas = getDatas();
+    const datas = getInitialData();
 
     this.state = {
       title: "Notes",
