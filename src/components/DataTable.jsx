@@ -33,7 +33,7 @@ function DataTable({ headers, datas, actions, onDelete }) {
                   ))}
                 <TableAction
                   actions={actions.tableAction}
-                  uuid={Object.values(data)[0]}
+                  id={Object.values(data)[0]}
                   onDelete={onDelete}
                 />
               </tr>

@@ -1,6 +1,6 @@
 import React from "react";
 
-function TableAction({ actions, uuid, onDelete }) {
+function TableAction({ actions, id, onDelete }) {
   return (
     <td>
       <div className="flex justify-center items-center space-x-2">
@@ -8,7 +8,7 @@ function TableAction({ actions, uuid, onDelete }) {
           <button
             key={`${actionItem.action}-${index}`}
             onClick={
-              actionItem.action === "delete" ? () => onDelete(uuid) : undefined
+              actionItem.action === "delete" ? () => onDelete(id) : undefined
             }
             className={`btn btn-xs text-white ${actionItem.color}`}
           >

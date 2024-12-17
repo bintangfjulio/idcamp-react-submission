@@ -39,18 +39,20 @@ class App extends React.Component {
     }
   }
 
-  onDeleteHandler(uuid) {
-    const datas = this.state.originalDatas.filter((data) => data.uuid !== uuid);
+  onDeleteHandler(id) {
+    const datas = this.state.originalDatas.filter((data) => data.id !== id);
     this.setState({ datas: datas, originalDatas: datas });
   }
 
   onAddHandler({ title, body }) {
     const newData = {
-      uuid: uuidv4(),
+      id: uuidv4(),
       archived: false,
       title: title,
       body: body,
-      createdAt: new Date().toLocaleDateString("en-GB"),
+      createdAt: new Date().toLocaleString("en-GB", {
+        timeZone: "Asia/Jakarta",
+      }),
     };
 
     this.setState((prevState) => {
@@ -68,9 +70,12 @@ class App extends React.Component {
       <>
         <Navbar></Navbar>
         <div className="px-8 mb-8">
-          <div className="flex justify-center">
-            <CardInsert title={"Add Note"} onAdd={this.onAddHandler} />
-          </div>
+          {this.state.actions.insert && (
+            <div className="flex justify-center">
+              <CardInsert title={"Add Note"} onAdd={this.onAddHandler} />
+            </div>
+          )}
+
           <Header {...this.state} onSearch={this.onSearchHandler}></Header>
           <DataTable
             {...this.state}
