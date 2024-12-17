@@ -47,12 +47,10 @@ class App extends React.Component {
   onAddHandler({ title, body }) {
     const newData = {
       id: uuidv4(),
-      archived: false,
       title: title,
       body: body,
-      createdAt: new Date().toLocaleString("en-GB", {
-        timeZone: "Asia/Jakarta",
-      }),
+      createdAt: new Date().toISOString(),
+      archived: false,
     };
 
     this.setState((prevState) => {

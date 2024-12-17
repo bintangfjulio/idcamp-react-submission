@@ -1,5 +1,6 @@
 import React from "react";
 import TableAction from "./TableAction";
+import { showFormattedDate } from "../utils";
 
 function DataTable({ headers, datas, actions, onDelete }) {
   return (
@@ -26,14 +27,12 @@ function DataTable({ headers, datas, actions, onDelete }) {
             datas.map((data, rowIndex) => (
               <tr key={rowIndex}>
                 <td className="text-center">{rowIndex + 1}.</td>
-                {Object.keys(data)
-                  .slice(2)
-                  .map((key, colIndex) => (
-                    <td key={`${key}-${colIndex}`}>{data[key]}</td>
-                  ))}
+                <td>{data.title}</td>
+                <td>{data.body}</td>
+                <td>{showFormattedDate(data.createdAt)}</td>
                 <TableAction
                   actions={actions.tableAction}
-                  id={Object.values(data)[0]}
+                  id={data.id}
                   onDelete={onDelete}
                 />
               </tr>
