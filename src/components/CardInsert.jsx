@@ -6,27 +6,29 @@ class CardInsert extends React.Component {
     super(props);
 
     this.state = {
-      name: "",
-      path: "",
+      title: "",
+      body: "",
     };
 
-    this.onNameChangeEventHandler = this.onNameChangeEventHandler.bind(this);
-    this.onPathChangeEventHandler = this.onPathChangeEventHandler.bind(this);
+    this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
+    this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
     this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
   }
 
-  onNameChangeEventHandler(event) {
-    this.setState(() => {
-      return {
-        name: event.target.value,
-      };
-    });
+  onTitleChangeEventHandler(event) {
+    if (event.target.value.length <= 50) {
+      this.setState(() => {
+        return {
+          title: event.target.value,
+        };
+      });
+    }
   }
 
-  onPathChangeEventHandler(event) {
+  onBodyChangeEventHandler(event) {
     this.setState(() => {
       return {
-        path: event.target.value,
+        body: event.target.value,
       };
     });
   }
@@ -38,19 +40,23 @@ class CardInsert extends React.Component {
 
   render() {
     return (
-      <div className="card w-1/2 bg-white shadow-md mt-6">
+      <div className="card w-full md:w-1/2 bg-white shadow-md mt-6">
         <div className="card-body">
           <form onSubmit={this.onSubmitEventHandler}>
             <div className="card-title">{this.props.title}</div>
             <InputField
-              label={"Course Name"}
-              value={this.state.name}
-              onChange={this.onNameChangeEventHandler}
+              label={"Title"}
+              value={this.state.title}
+              onChange={this.onTitleChangeEventHandler}
             />
+            <div className="text-right text-sm text-gray-500">
+              {this.state.title.length} / 50
+            </div>
+
             <InputField
-              label={"Course Path"}
-              value={this.state.path}
-              onChange={this.onPathChangeEventHandler}
+              label={"Body"}
+              value={this.state.body}
+              onChange={this.onBodyChangeEventHandler}
             />
 
             <div className="flex justify-end mt-6">

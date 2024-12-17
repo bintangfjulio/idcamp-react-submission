@@ -7,9 +7,9 @@ function Header({ title, actions, onSearch }) {
 
   return (
     <div className="flex justify-between my-6 items-center">
-      <h1 className="font-bold text-2xl">{title}</h1>
+      <h1 className="font-bold text-xl">{title}</h1>
       {actions.search && (
-        <label className="input input-bordered flex items-center input-sm py-5">
+        <label className="input input-bordered flex items-center input-sm py-5 w-2/3 md:w-1/3">
           <input
             type="text"
             className="focus:outline-none focus:ring-0 grow border-none text-sm gap-2 w-full"

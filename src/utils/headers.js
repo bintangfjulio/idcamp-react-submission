@@ -1,5 +1,5 @@
 const getHeaders = () => {
-  return ["No", "Course Name", "Learning Path", "Action"];
+  return ["No", "Title", "Body", "Created At", "Action"];
 };
 
 export { getHeaders };

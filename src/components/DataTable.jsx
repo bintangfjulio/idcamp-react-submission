@@ -27,7 +27,7 @@ function DataTable({ headers, datas, actions, onDelete }) {
               <tr key={rowIndex}>
                 <td className="text-center">{rowIndex + 1}.</td>
                 {Object.keys(data)
-                  .slice(1)
+                  .slice(2)
                   .map((key, colIndex) => (
                     <td key={`${key}-${colIndex}`}>{data[key]}</td>
                   ))}

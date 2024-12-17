@@ -6,7 +6,7 @@ const getActions = () => {
       // {
       //   action: "archive",
       //   label: "Arsipkan",
-      //   color: "warning",
+      //   color: "bg-warning",
       // },
       {
         action: "delete",

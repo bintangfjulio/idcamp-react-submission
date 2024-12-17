@@ -14,7 +14,7 @@ class App extends React.Component {
     const datas = getDatas();
 
     this.state = {
-      title: "Courses",
+      title: "Notes",
       datas: datas,
       originalDatas: datas,
       headers: getHeaders(),
@@ -32,8 +32,8 @@ class App extends React.Component {
     } else {
       const filteredDatas = this.state.originalDatas.filter(
         (data) =>
-          data.name.toLowerCase().includes(text.toLowerCase()) ||
-          data.path.toLowerCase().includes(text.toLowerCase())
+          data.title.toLowerCase().includes(text.toLowerCase()) ||
+          data.body.toLowerCase().includes(text.toLowerCase())
       );
       this.setState({ datas: filteredDatas });
     }
@@ -44,11 +44,13 @@ class App extends React.Component {
     this.setState({ datas: datas, originalDatas: datas });
   }
 
-  onAddHandler({ name, path }) {
+  onAddHandler({ title, body }) {
     const newData = {
       uuid: uuidv4(),
-      name: name,
-      path: path,
+      archived: false,
+      title: title,
+      body: body,
+      createdAt: new Date().toLocaleDateString("en-GB"),
     };
 
     this.setState((prevState) => {
@@ -65,9 +67,9 @@ class App extends React.Component {
     return (
       <>
         <Navbar></Navbar>
-        <div className="px-8">
+        <div className="px-8 mb-8">
           <div className="flex justify-center">
-            <CardInsert title={"Add New Course"} onAdd={this.onAddHandler} />
+            <CardInsert title={"Add Note"} onAdd={this.onAddHandler} />
           </div>
           <Header {...this.state} onSearch={this.onSearchHandler}></Header>
           <DataTable
